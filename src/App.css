@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +34,94 @@
     transform: rotate(360deg);
   }
 }
+.error-no-city
+{
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Comfortaa', cursive;
+}
+.weather-text{
+  font-size: 30px;
+  font-family: 'Comfortaa', cursive;
+
+}
+.secWeatherType
+{
+  font-weight: bolder;
+  font-size: 20px;
+  font-family: 'Comfortaa', cursive;
+}
+.secWeatherData
+{
+  font-size: 20px;
+}
+.custom_card{
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  padding-right: 4% !important; 
+  padding-left: 4% !important;
+  padding-top: 3% !important;
+  padding-bottom: 3% !important;
+  border: 0px solid black;
+  overflow:auto;
+  background: #ACD3E0;
+  margin-bottom: 2% 
+}
+.split{
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 1% 3%;
+    margin: 1% 0px;
+    background: #ffffff73;
+}
+.date,.time{
+  font-weight: bolder;
+  font-size: 20px;
+  font-family: 'Comfortaa', cursive;
+}
+.split-weather-details
+{
+  display: flex;
+  padding: 0px 1%;
+}
+.borderbl{
+  border: 2px solid black;
+}
+.search-box
+{
+  background: #ACD3E0 !important;
+  border: #ACD3E0 !important;
+  border-bottom: 2px solid #2F4AA7 !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  font-size: larger !important;
+}
+.comfortaa
+{
+  font-family: 'Comfortaa', cursive;
+}
+.weatherCond{
+  float: left;
+  border:0px solid black;
+  flex: 1
+}
+.temperature{
+  float: left;
+  border:0px solid black;
+  font-size: 60px;
+  padding:1% 0% 0% 1%;
+  font-family: 'Comfortaa', cursive;
+  flex: 1;
+}
+.secondaryweather
+{
+  float: left;
+  border: 0px solid black;
+  display: flex;
+  justify-content: space-around;
+  flex: 7;float: left;
+  border: 0px solid black;
+  display: flex;
+  justify-content: space-around;
+  flex: 7;
+} 
