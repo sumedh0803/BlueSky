@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import WeatherConditionText from './WeatherConditionText'
 import WeatherDataPrimary from './WeatherDataPrimary'
 import Interval from './Interval'
+import { Grid } from '@material-ui/core'
 
 class MainContent extends Component {
     render() {
@@ -20,11 +21,11 @@ class MainContent extends Component {
         
         const uvi = this.props.data.uvi
         return (
-            <div>
+            <React.Fragment>
                 <WeatherConditionText weather = {weather} city={city_display}/>
                 <WeatherDataPrimary weather = {weather} wind = {wind} humidity = {humidity} uvi = {uvi} current = {current}/>
                 <Interval daily = {daily} hourly = {hourly}/>
-            </div>
+            </React.Fragment>
         )
     }
 }

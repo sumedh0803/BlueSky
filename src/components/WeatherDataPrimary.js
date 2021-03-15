@@ -14,6 +14,9 @@ import windImg from '../assets/wind.png';
 import humidityImg from '../assets/humidity.png';
 import uvImg from '../assets/uv.png';
 import SecondaryWeather from './SecondaryWeather';
+import Box from '@material-ui/core/Box';
+import { Grid, Typography } from '@material-ui/core';
+
 class WeatherDataPrimary extends Component {
 
     getImageSrc(weather)
@@ -56,15 +59,20 @@ class WeatherDataPrimary extends Component {
         }]
 
         return (
-            <div style = {{"overflow": "hidden","display": "flex","margin-top":"1%"}}>
-                <img className = "weatherCond" src={imgSrc} id = "weather-img" width = "125px"/>
-                <div className = "temperature">{Math.round(this.props.current)}°C</div>
-                <div className = "secondaryweather" id = "weather-img">
-                    {secondaryWeather.map(({img,data,type}) => {
-                        return <SecondaryWeather img = {img} data = {data} type = {type}/>
-                    })}
-                </div>
-            </div>
+            <Grid  item xs = {12} spacing = {1} container>
+                <Grid item xs = {12} md = {5} container>
+                    <Grid xs = {6}><img className = "weatherCond" src={imgSrc} id = "weather-img" width = "125px"/></Grid>
+                    <Grid xs = {6} style = {{"placeSelf" : "center"}}><Typography variant = "h1">{Math.round(this.props.current)}°C</Typography></Grid>
+                </Grid>
+                <Grid item xs = {12} md = {7} container>
+                    <Box className = "secondaryweather" id = "weather-img">
+                        {secondaryWeather.map(({img,data,type}) => {
+                            return <Grid item xs = {12} container direction = "column"><SecondaryWeather img = {img} data = {data} type = {type}/></Grid>
+                        })}
+                    </Box>
+                </Grid>
+            </Grid>
+            
         )
     }
 }

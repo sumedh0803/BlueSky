@@ -34,12 +34,12 @@
     transform: rotate(360deg);
   }
 }
-.error-no-city
+/* .error-no-city
 {
   font-size: 24px;
   text-align: center;
   font-family: 'Comfortaa', cursive;
-}
+} */
 .weather-text{
   font-size: 30px;
   font-family: 'Comfortaa', cursive;
@@ -89,9 +89,9 @@
 }
 .search-box
 {
-  background: #ACD3E0 !important;
+  /* background: #ACD3E0 !important;
   border: #ACD3E0 !important;
-  border-bottom: 2px solid #2F4AA7 !important;
+  border-bottom: 2px solid #2F4AA7 !important; */
   color: #000 !important;
   font-weight: 700 !important;
   font-size: larger !important;

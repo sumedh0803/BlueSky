@@ -1,3 +1,4 @@
+import { Grid } from '@material-ui/core';
 import React from 'react'
 
 function WeatherConditionText(props) {
@@ -14,11 +15,11 @@ function WeatherConditionText(props) {
     }
     
     return (
-        weather ? 
-            <div className = "weather-text">
-                Its {weather} in {city}
-            </div> :
-            null
+            <Grid item sm = {12}>
+                <div className = "weather-text">
+                    Its {weather} in {city}
+                </div>
+            </Grid>
     )
 }
 

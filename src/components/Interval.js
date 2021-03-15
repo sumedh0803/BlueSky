@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import SplitInterval from './SplitInterval'
+import Button from '@material-ui/core/Button';
+import { Grid, Paper } from '@material-ui/core';
+
 
 class Interval extends Component {
     constructor(props) {
@@ -12,7 +15,7 @@ class Interval extends Component {
     clickHandler(e)
     {
         this.setState({
-            interval: e.target.name
+            interval: e.currentTarget.name
         })
     }
     render() {
@@ -24,28 +27,26 @@ class Interval extends Component {
         {
             case "day":return (
                 <React.Fragment>
-                    <div style = {{"display":" flex","justifyContent": "space-around","marginTop": "2%"}}>
-                        <button name = "day" type="button" className="btn btn-primary" onClick = {(e)=>this.clickHandler(e)}>Daily</button>
-                        <button name = "hour" type="button" className="btn" style = {btnNoSelect} onClick = {(e)=>this.clickHandler(e)}>Hourly</button>
-                    </div>
-                    <div>
-                        {
-                            daily.map((day) =>
-                                <SplitInterval data = {day} type = "day"/>
-                            )
-                        }
-                    </div>
-                    </React.Fragment>
+                    <Grid item container xs = {12} justify = "space-around" >
+                        <Button name = "day" className="btn" variant="contained" color="secondary" onClick = {(e)=>this.clickHandler(e)}>Daily</Button>
+                        <Button name = "hour" className="btn" variant="contained" color="default" onClick = {(e)=>this.clickHandler(e)}>Hourly</Button>
+                    </Grid>  
+                    <Grid item xs = {12} container spacing = {2}>
+                    {daily.map((day) =>
+                            <SplitInterval data = {day} type = "day"/>
+                    )}
+                    </Grid>
+                </React.Fragment>
                 )
             case "hour":
                 let i = 0;
                 return (
                 <React.Fragment>
-                    <div style = {{"display":" flex","justifyContent": "space-around","marginTop": "2%"}}>
-                        <button name = "day" type="button" class="btn" style = {btnNoSelect} onClick = {(e)=>this.clickHandler(e)}>Daily</button>
-                        <button name = "hour" type="button" class="btn btn-primary" onClick = {(e)=>this.clickHandler(e)}>Hourly</button>
-                    </div>
-                    <div>
+                    <Grid container xs = {12} justify = "space-around">
+                        <Button name = "day" variant="contained" color="default" onClick = {(e)=>this.clickHandler(e)}>Daily</Button>
+                        <Button name = "hour" variant="contained" color="secondary" onClick = {(e)=>this.clickHandler(e)}>Hourly</Button>
+                    </Grid>
+                    <Grid item xs = {12} container spacing = {2}>
                         {
                             hourly.filter(hour =>{
                                 if(i < 24 && i%2 != 0 && hour.dt >= parseInt(Date.now()/1000))
@@ -62,7 +63,7 @@ class Interval extends Component {
                                 <SplitInterval data = {hour} type = "hour"/>
                             )
                         }
-                    </div>
+                     </Grid>
                 </React.Fragment>
             )
         }

@@ -4,6 +4,10 @@ import MainContent from './MainContent'
 import axios from 'axios'
 import SearchBar from './SearchBar'
 import Loader from "react-loader-spinner";
+import { Grid, TextField } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
+import { Typography } from '@material-ui/core';
+
 
 
 
@@ -87,8 +91,12 @@ class Main extends Component {
     {
         switch(status) 
         {
-            case "init": return <div className = "error-no-city"><h1>Type a location to check weather</h1></div>
-            case "fetching": return <div className = "error-no-city"><Loader type="Puff" color="#2F4AA7" height={80} width={80} /></div>
+            case "init": return <Grid item sm = {12}>
+                                    <Typography variant="h2" style={{ "text-align": "center" }}>Type a location to check weather</Typography>
+                                </Grid>
+            case "fetching": return <Grid item container sm = {12} justify="center" alignItems="center">
+                                        <Loader type="Puff" color="#2F4AA7" height={80} width={80} />
+                                    </Grid>
             case "ready": return <MainContent data = {this.state}/> 
         }
 
@@ -97,10 +105,14 @@ class Main extends Component {
     render() {
         
         return (
-            <div className = "custom_card container-lg ">   
-                <SearchBar submitHandler = {this.submitHandler} city_display = {this.state.city_display}/>
-                {this.loadDynamic(this.state.pageStatus)}    
-            </div>
+            <Grid container>
+                <Grid item sm = {1} xs = {0}/>
+                <Grid item sm = {10} xs = {12} className = "custom_card" container spacing = {1} >
+                    <SearchBar submitHandler = {this.submitHandler} city_display = {this.state.city_display}/>
+                    {this.loadDynamic(this.state.pageStatus)} 
+                </Grid>
+                <Grid item sm = {1} xs = {0}/>
+            </Grid>
         )
             
     }     

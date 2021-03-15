@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Grid, TextField } from '@material-ui/core';
 
 export class SearchBar extends Component {
     constructor(props) {
@@ -22,20 +23,24 @@ export class SearchBar extends Component {
     }
     submitHandler(e) {
         e.preventDefault()
-        this.cityRef.current.blur()
+        var input = Object.values(e.currentTarget.elements).filter(el => {
+                        return el.tagName === "INPUT"
+                    })
+        input[0].blur()
         this.props.submitHandler(this.state.city)
     }
-    focusHandler()
+    focusHandler(e)
     {
-        this.cityRef.current.select();
+        e.currentTarget.select()
     }
     
     render() {
         return (
-            <form className="form-group" onSubmit={(e)=>this.submitHandler(e)}>
-                    <label className = "comfortaa" for="city" style = {{"fontSize":"24px"}}>Search for your city</label>
-                    <input type="text"className=" form-control comfortaa search-box" id="city" name = "city" value = {this.state.city } onChange = {(e) => this.changeHandler(e)} ref = {this.cityRef} onFocus = {()=>this.focusHandler()} placeholder = "Eg. Dallas"/>
-            </form>
+            <Grid item xs = {12}>
+                <form className="form-group" onSubmit={(e)=>this.submitHandler(e)}>
+                    <TextField id="standard-basic" autoComplete="false" color = "secondary" variant="outlined" label="Search for your city" name = "city" fullWidth value = {this.state.city } onChange = {e =>this.changeHandler(e)} onFocus = {(e)=>this.focusHandler(e)} />
+                </form>
+            </Grid>
         )
     }
 }

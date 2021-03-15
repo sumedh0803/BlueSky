@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import WeatherDataPrimaryMini from './WeatherDataPrimaryMini'
+import Box from '@material-ui/core/Box';
+import { Grid, Paper } from '@material-ui/core';
 
 class SplitInterval extends Component {
     render() {
@@ -24,22 +26,28 @@ class SplitInterval extends Component {
             const date = new Date(dtUtc * 1000);
             const dt = date.toDateString()
             return (
-                <div className = "split">
-                    <div className = "date">{dt}</div>
-                    <WeatherDataPrimaryMini weather = {weather} wind = {wind} humidity = {humidity} uvi = {uvi} max = {Math.round(max)} min = {Math.round(min)}/>
-                </div>
+                    <Grid item xs = {12} container>
+                        <Paper style = {{width: "100%", padding: "10px"}}>
+                        <Grid xs = {12}  item className = "date">{dt}</Grid>
+                        <WeatherDataPrimaryMini weather = {weather} wind = {wind} humidity = {humidity} uvi = {uvi} max = {Math.round(max)} min = {Math.round(min)}/>
+                        </Paper>
+                    </Grid>
+   
             )
+
+            
         }
         else
         {
             const time = new Date(dtUtc * 1000)
             const tm = ` ${time.toLocaleTimeString()}  ${time.toLocaleDateString()}`
             return (
-                <div className = "split">
-                    <div className = "time" style={{"display":"block"}}>{tm}</div>
-                    <WeatherDataPrimaryMini weather = {weather} wind = {wind} humidity = {humidity} current = {Math.round(current)}/>
-                    
-                </div>
+                <Grid item xs = {12} container>
+                    <Paper style = {{width: "100%", padding: "10px"}}>
+                        <Grid xs = {12}  item className = "date">{tm}</Grid>
+                        <WeatherDataPrimaryMini weather = {weather} wind = {wind} humidity = {humidity} current = {Math.round(current)}/>
+                    </Paper>
+                </Grid>
             )
         }
         

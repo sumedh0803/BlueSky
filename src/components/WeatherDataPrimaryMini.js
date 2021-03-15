@@ -14,6 +14,7 @@ import windImg from '../assets/wind.png';
 import humidityImg from '../assets/humidity.png';
 import uvImg from '../assets/uv.png';
 import SecondaryWeatherMini from './SecondaryWeatherMini';
+import { Grid, Typography } from '@material-ui/core';
 class WeatherDataPrimaryMini extends Component {
     getImageSrc(weather)
     {
@@ -43,28 +44,43 @@ class WeatherDataPrimaryMini extends Component {
         let minmax = null
         if(current)
         {
-            minmax =    <div style = {{"margin":"auto 2%","fontSize":"25px","flex":"1"}}>
-                            {current}°C
-                        </div>
+            minmax = <Typography variant = "h2">{current}°C</Typography>
+                        
         }
         else
         {
-            minmax =<div style = {{"margin":"auto 2%","fontSize":"18px","flex":"1"}}>
-                        <div>Max: {max}°C</div>
-                        <div>Min: {min}°C</div>
+            minmax =<div>
+                        <Typography variant = "h3">Max: {max}°C</Typography>
+                        <Typography variant = "h3">Min: {min}°C</Typography>
                     </div>
         }
         return (
-            <div className = "split-weather-details">
-                <img src = {imgSrc} height = "80px" className = "" style = {{"margin": "auto 0"}}/>
-                {minmax}
-                <div style={secondaryweather} id = "weather-img">
-                    <SecondaryWeatherMini img = {windImg} data = {`${wind.speed}MPH from ${wind.deg}`} type = "Wind"/>
-                    <SecondaryWeatherMini img = {humidityImg} data = {`${humidity}%`} type = "Humidity"/>
-                    <SecondaryWeatherMini img = {uvImg} data = {uvi} type = "UV Index"/>  
-                </div>    
-            </div>
+            <Grid container item xs = {12}>
+                <Grid item xs = {12} md = {5} container>
+                    <Grid xs = {6} style = {{alignSelf: "center"}}><img src = {imgSrc} height = "80px"/></Grid>
+                    <Grid xs = {6} style = {{alignSelf: "center"}}>{minmax}</Grid>
+                    
+                </Grid>
+                <Grid item xs = {12} md = {7} container>
+                    <Grid item xs = {4}><SecondaryWeatherMini img = {windImg} data = {`${wind.speed}MPH from ${wind.deg}`} type = "Wind"/></Grid>
+                    <Grid item xs = {4}><SecondaryWeatherMini img = {humidityImg} data = {`${humidity}%`} type = "Humidity"/></Grid>
+                    <Grid item xs = {4}><SecondaryWeatherMini img = {uvImg} data = {uvi} type = "UV Index"/></Grid>
+                </Grid>    
+            </Grid>
         )
+        // <Grid container item xs = {12} spacing = {1}>
+            //     <Grid item xs = {12} md = {5} container>
+            //         <Grid xs = {6}><img className = "weatherCond" src={imgSrc} id = "weather-img" width = "125px"/></Grid>
+            //         <Grid xs = {6} style = {{"placeSelf" : "center"}}><Typography variant = "h2">{Math.round(this.props.current)}°C</Typography></Grid>
+            //     </Grid>
+            //     <Grid item md = {7} container>
+            //         <Box className = "secondaryweather" id = "weather-img">
+            //             {secondaryWeather.map(({img,data,type}) => {
+            //                 return <Grid item xs = {4}><SecondaryWeather img = {img} data = {data} type = {type}/></Grid>
+            //             })}
+            //         </Box>
+            //     </Grid>
+            // </Grid>
     }
 }
 
