@@ -1,6 +1,11 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BlueSky",
+  "name": "BlueSky",
+  "description": "Wondering how warm is it at your favorite vacation spot? Want to know the hourly weather forecast where you stay? BlueSky can do it for you! Just type in the place and hit enter! BlueSky will provide you daily and hourly weather forecasts for any place around the globe.",
+  "mauv_id": "Lj8ATimXqXnerFkL017w",
+  "mauv_links": {
+    "github": "https://github.com/sumedh0803/BlueSky"
+  },
   "icons": [
     {
       "src": "favicon.ico",
